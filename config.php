@@ -10,6 +10,6 @@ define('APP_SUBTITLE', 'Plateforme Projets ECAM-EPMI 1AE');
 define('APP_YEAR', date('Y'));
 
 // Connexion BDD et fonctions
-require_once __DIR__ . '/includes/db.php';
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/functions.php';
 
