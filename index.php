@@ -1,7 +1,4 @@
 <?php
-echo "test", $user;
-echo $user;
-require_once 'config.php';
 /**
  * Page d'Accueil - EcoSmart Lab
  * ECAM-EPMI 1AE - Projet Web
@@ -29,7 +26,7 @@ if ($pdo) {
     } catch (Exception $e) {}
 }
 
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/hearder.php';
 ?>
 
 <!-- Hero Section -->
