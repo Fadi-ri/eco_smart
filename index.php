@@ -3,6 +3,7 @@
  * Page d'Accueil - EcoSmart Lab
  * ECAM-EPMI 1AE - Projet Web
  */
+/*hello c damian*/
 
 $pageTitle = "Accueil & Innovations Ingénieurs";
 require_once __DIR__ . '/config.php';
