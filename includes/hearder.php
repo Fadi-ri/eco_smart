@@ -58,8 +58,8 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
                     <li class="nav-item">
-                        <a class="nav-link <?= ($currentPage === 'index.php') ? 'active' : '' ?>" href="index.php">
-                            <i class="bi bi-house-door me-1"></i> Accueil
+                        <a class="nav-link <?= ($currentPage === 'feed.php') ? 'active' : '' ?>" href="feed.php">
+                            <i class="bi bi-house-door me-1"></i> Feed 
                         </a>
                     </li>
                     <li class="nav-item">
@@ -89,14 +89,12 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
                     </li>
                 </ul>
 
-                <!-- Actions de droite (Dark Mode & Bouton CTA) -->
+                <!-- Actions de droite (Dark Mode ) -->
                 <div class="d-none d-lg-flex align-items-center gap-3">
                     <button type="button" class="theme-toggle-btn js-theme-toggle" title="Basculer thème sombre / clair" aria-label="Basculer thème">
                         <i class="bi bi-moon-stars-fill"></i>
                     </button>
-                    <a href="inscription.php" class="btn btn-primary btn-sm px-3 shadow-sm">
-                        <i class="bi bi-lightning-fill"></i> Inscription Projet
-                    </a>
+                    
                 </div>
             </div>
         </div>
