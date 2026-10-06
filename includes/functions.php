@@ -1,5 +1,7 @@
 <?php
 
+
+#securite  this converts special HTML characters (<, >, &, ", ') to HTML entities to prevent Cross-Site Scripting (XSS) attacks.
 function e($value): string
 {
 	return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
@@ -44,10 +46,10 @@ function get_project_stats(PDO $pdo): array
 
 	$projects = $pdo->query('SELECT statut, budget_estime FROM projets_inscriptions')->fetchAll();
 	$statusKeys = [
-		'Validé' => 'valide',
+		'Valide' => 'valide',
 		'En cours' => 'en_cours',
 		'En attente' => 'en_attente',
-		'Terminé' => 'termine',
+		'Termine' => 'termine',
 	];
 
 	foreach ($projects as $project) {

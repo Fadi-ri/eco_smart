@@ -1,10 +1,10 @@
     </main>
 
-    <!-- Pied de Page (Footer ) -->
+    <!-- Pied de Page (Footer) -->
     <footer class="footer-custom">
         <div class="container">
             <div class="row g-4 mb-4">
-                <!-- Présentation École & Projet -->
+                <!-- Presentation Ecole & Projet -->
                 <div class="col-lg-4 col-md-6">
                     <div class="d-flex align-items-center gap-2 mb-3">
                         <div class="brand-icon">
@@ -13,10 +13,10 @@
                         <h5 class="m-0 fw-bold"><?= APP_NAME ?></h5>
                     </div>
                     <p class="text-muted small mb-3">
-                        Plateforme collaborative dédiée à l'innovation, à la transition énergétique et aux projets techniques d'ingénierie pour les étudiants de l'<strong>ECAM-EPMI (RAN - 1AE)</strong>.
+                        Plateforme collaborative dediee a linnovation, a la transition energetique et aux projets techniques dingenierie pour les etudiants de l<strong>ECAM-EPMI (RAN - 1AE)</strong>.
                     </p>
                     <div class="d-flex gap-2 footer-social-links">
-                        <a href="https://epmi.ymag.cloud" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="Yparéo ECAM-EPMI" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+                        <a href="https://epmi.ymag.cloud" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="Ypareo ECAM-EPMI" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                             <i class="bi bi-mortarboard-fill"></i>
                         </a>
                         <a href="https://github.com" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="GitHub" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
@@ -34,25 +34,25 @@
                     <ul class="footer-links">
                         <li><a href="index.php"><i class="bi bi-chevron-right small me-1"></i> Accueil</a></li>
                         <li><a href="projets.php"><i class="bi bi-chevron-right small me-1"></i> Innovations</a></li>
-                        <li><a href="inscription.php"><i class="bi bi-chevron-right small me-1"></i> Déposer Projet</a></li>
+                        <li><a href="inscription.php"><i class="bi bi-chevron-right small me-1"></i> Deposer Projet</a></li>
                         <li><a href="admin.php"><i class="bi bi-chevron-right small me-1"></i> Dashboard CRUD</a></li>
-                        <li><a href="a_propos.php"><i class="bi bi-chevron-right small me-1"></i> À Propos</a></li>
+                        <li><a href="a_propos.php"><i class="bi bi-chevron-right small me-1"></i> A Propos</a></li>
                     </ul>
                 </div>
 
-                <!-- Thématiques Ingénieur -->
+                <!-- Themes Ingenieur -->
                 <div class="col-lg-3 col-md-6">
-                    <h6 class="footer-title">Pôles d'Ingénierie</h6>
+                    <h6 class="footer-title">Poles dIngenierie</h6>
                     <ul class="footer-links">
-                        <li><a href="projets.php?filiere=energie"><i class="bi bi-lightning-charge text-success me-1"></i> Énergies Renouvelables</a></li>
-                        <li><a href="projets.php?filiere=ia"><i class="bi bi-cpu text-primary me-1"></i> Systèmes d'Information & IA</a></li>
+                        <li><a href="projets.php?filiere=energie"><i class="bi bi-lightning-charge text-success me-1"></i> Energies Renouvelables</a></li>
+                        <li><a href="projets.php?filiere=ia"><i class="bi bi-cpu text-primary me-1"></i> Systemes dInformation & IA</a></li>
                         <li><a href="projets.php?filiere=robotique"><i class="bi bi-robot text-warning me-1"></i> Robotique & IoT</a></li>
-                        <li><a href="projets.php?filiere=mobilite"><i class="bi bi-ev-front text-purple me-1"></i> Smart Cities & Mobilité</a></li>
+                        <li><a href="projets.php?filiere=mobilite"><i class="bi bi-ev-front text-purple me-1"></i> Smart Cities & Mobilite</a></li>
                         <li><a href="projets.php?filiere=industrie"><i class="bi bi-gear-wide text-danger me-1"></i> Industrie 4.0 & Jumeaux</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact & Informations École -->
+                <!-- Contact & Informations Ecole -->
                 <div class="col-lg-3 col-md-6">
                     <h6 class="footer-title">Campus & Contact</h6>
                     <p class="text-muted small mb-2">
@@ -75,7 +75,7 @@
             <!-- Bas de page & Technologies -->
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
                 <p class="text-muted small m-0">
-                    &copy; <?= APP_YEAR ?> <strong><?= APP_NAME ?></strong> — Projet Développement Web RAN 1AE. Tous droits réservés.
+                    &copy; <?= APP_YEAR ?> <strong><?= APP_NAME ?></strong> — Projet Developpement Web RAN 1AE. Tous droits reserves.
                 </p>
                 <div class="d-flex flex-wrap gap-2">
                     <span class="badge bg-dark-subtle text-body border small">HTML5</span>

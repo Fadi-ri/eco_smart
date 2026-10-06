@@ -1,11 +1,11 @@
 <?php
 /**
- * En-tête Commun & Navigation
+ * En-tete Commun & Navigation
  * EcoSmart Lab - ECAM-EPMI 1AE
  */
 require_once __DIR__ . '/../config.php';
 
-// Détermination de la page active pour le menu
+// Determination de la page active pour le menu
 $currentPage = basename($_SERVER['SCRIPT_NAME']);
 ?>
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EcoSmart Lab - Plateforme d'Innovations et de Gestion de Projets d'Ingénierie pour les étudiants de l'ECAM-EPMI (1AE).">
-    <meta name="author" content="Étudiants 1AE - ECAM-EPMI">
+    <meta name="description" content="EcoSmart Lab - Plateforme dInnovations et de Gestion de Projets dIngenierie pour les etudiants de lECAM-EPMI (1AE).">
+    <meta name="author" content="Etudiants 1AE - ECAM-EPMI">
     <title><?= isset($pageTitle) ? e($pageTitle) . ' | ' . APP_NAME : APP_NAME . ' - ' . APP_SUBTITLE ?></title>
     
     <!-- Favicon -->
@@ -27,13 +27,13 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
-    <!-- Styles CSS Personnalisés -->
+    <!-- Styles CSS Personnalises -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-    <!-- Barre de Navigation Supérieure -->
+    <!-- Barre de Navigation Superieure -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <!-- Logo & Nom -->
@@ -46,7 +46,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
 
             <!-- Boutons Mobiles (Dark Mode + Hamburger) -->
             <div class="d-flex align-items-center gap-2 d-lg-none">
-                <button type="button" class="theme-toggle-btn js-theme-toggle" aria-label="Changer de thème">
+                <button type="button" class="theme-toggle-btn js-theme-toggle" aria-label="Changer de theme">
                     <i class="bi bi-moon-stars-fill"></i>
                 </button>
                 <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Basculer la navigation">
@@ -69,7 +69,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= ($currentPage === 'inscription.php') ? 'active' : '' ?>" href="inscription.php">
-                            <i class="bi bi-plus-circle-fill me-1"></i> Déposer un Projet
+                            <i class="bi bi-plus-circle-fill me-1"></i> Deposer un Projet
                         </a>
                     </li>
                     <li class="nav-item">
@@ -79,7 +79,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= ($currentPage === 'a_propos.php') ? 'active' : '' ?>" href="a_propos.php">
-                            <i class="bi bi-info-circle me-1"></i> À Propos
+                            <i class="bi bi-info-circle me-1"></i> A Propos
                         </a>
                     </li>
                     <li class="nav-item">
@@ -91,7 +91,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
 
                 <!-- Actions de droite (Dark Mode ) -->
                 <div class="d-none d-lg-flex align-items-center gap-3">
-                    <button type="button" class="theme-toggle-btn js-theme-toggle" title="Basculer thème sombre / clair" aria-label="Basculer thème">
+                    <button type="button" class="theme-toggle-btn js-theme-toggle" title="Basculer theme sombre / clair" aria-label="Basculer theme">
                         <i class="bi bi-moon-stars-fill"></i>
                     </button>
                     

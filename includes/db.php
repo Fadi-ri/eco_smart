@@ -1,5 +1,5 @@
 <?php
-// Paramètres de connexion MySQL (XAMPP / WampServer)
+// Parametres de connexion MySQL (XAMPP / WampServer)
 $host   = 'localhost';
 $dbname = 'ecosmart_lab';
 $user   = 'root';
@@ -11,7 +11,7 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 } catch (Exception $e) {
-    // Mode de secours SQLite si MySQL n'est pas démarré
+    // Mode de secours SQLite si MySQL nest pas demarre
     $pdo = new PDO("sqlite:" . __DIR__ . "/../database.sqlite", null, null, [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, #si error
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -27,13 +27,13 @@ try {
     )");
 }
 
-// Fonction d'accès direct à la base
+// Fonction d'acces direct a la base
 function getPDO(): PDO {
     global $pdo;
     return $pdo;
 }
 
-// Alias de compatibilité
+// Alias de compatibilite
 class Database {
     public static function getConnection(): PDO {
         return getPDO();
