@@ -1,0 +1,121 @@
+:root {
+    /* Palette Principale */
+    --primary: #0d6efd;
+    --primary-dark: #0a58ca;
+    --primary-light: #e7f1ff;
+    --primary-glow: rgba(13, 110, 253, 0.25);
+    
+    --secondary: #20c997;
+    --secondary-dark: #0f9f75;
+    --secondary-light: #e8f9f4;
+    
+    --accent: #6f42c1;
+    --accent-light: #f3eefa;
+    
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #0dcaf0;
+    --success: #198754;
+
+    /* Neutres & Arriere-plans (Theme Clair) */
+    --bg-body: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #fffff5;
+    --bg-surface-subtle: #f1f5f9;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    
+    --border-color: #e2e8f0;
+    --border-color-subtle: #edf2f7;
+    
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+    
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    --card-shadow-hover: 0 20px 30px -10px rgba(13, 110, 253, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+    
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-pill: 50px;
+    
+    --transition-fast: 0.18s ease;
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s ease;
+    
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: var(--font-sans);
+}
+
+/* Theme Sombre (Active via data-theme="dark" sur <html> ou <body>) */
+[data-theme="dark"] {
+    --bg-body: #0b1120;
+    --bg-surface: #1e293b;
+    --bg-surface-elevated: #283548;
+    --bg-surface-subtle: #162032;
+    --bg-glass: rgba(30, 41, 59, 0.88);
+    
+    --border-color: #334155;
+    --border-color-subtle: #243247;
+    
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-light: #64748b;
+    
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 20px 30px -10px rgba(13, 110, 253, 0.35);
+    
+    --primary-light: rgba(13, 110, 253, 0.18);
+    --secondary-light: rgba(32, 201, 151, 0.18);
+    --accent-light: rgba(111, 66, 193, 0.18);
+}
+
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.navbar-custom {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    background-color: var(--primary-glass);
+    top: 0;
+
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    background: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.js-theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
