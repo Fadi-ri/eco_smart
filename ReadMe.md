@@ -20,6 +20,11 @@ this document is going to include:
  </code>
  don't forget to add me (fadi-ri) to review your PR
 
+
+* Front-end we are going to<b style="color : red"> heavily</b> use the bootstrap framework for both the css and JS to facilite the work
+i would aim at 80% to 90% of the code 
+You will find the color pallet from Kay's work in the style.css file and we are going to improve the styling of the bootstrap class to better fit our app
+
 * For now 08/10/2026
     <h1 style="color: blue;">General project architecture and organizing</h1>
     after the teams last september weekly  
@@ -52,6 +57,7 @@ this document is going to include:
     <h1 style="color: blue;">Front-end</h1>
     
     --fadi--
+    <br>
      Worked on creating html structure for the following (using REACT classes to make it easier) :
     - footer
     - header
@@ -63,16 +69,18 @@ this document is going to include:
 
 
     --fadi--
+
     * created the database for the app and configured it for the form and project
     still working on the database to add profiles and to store posts
 
     
     <h1 style="color: blue;">Security</h1>
     --fadi-- 
+    <br>
     first week of october
     * added in fonctions.php multiple flash security checks to be implemented in the code later
     
     * connection parameters for Mysql /XAMPP in db.php
      
-
+    --
 
