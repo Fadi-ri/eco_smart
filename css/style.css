@@ -119,3 +119,25 @@ body {
     cursor: pointer;
     transition: all var(--transition-fast);
 }
+.footer-custom {
+    background-color: var(--bg-surface);
+    color: var(--text-muted);
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+.footer-links{
+    list-style: none;
+    padding-left: 0px;
+
+}
+.footer-links a {
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+    list-style: none;
+
+
+}
+.footer-links a:hover {
+    color: var(--primary);
+
+}
