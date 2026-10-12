@@ -52,7 +52,8 @@ You will find the color pallet from Kay's work in the style.css file and we are 
                 - personal account page
                 - pdf styling
                 - dark mode
-
+                -login
+                -sign-up(follow the sql tabel)
 
     <h1 style="color: blue;">Front-end</h1>
     
