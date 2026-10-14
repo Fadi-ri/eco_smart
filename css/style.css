@@ -106,19 +106,6 @@ body {
     box-shadow: 0 4px 12px var(--primary-glow);
 }
 
-.js-theme-toggle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid var(--border-color);
-    background: var(--bg-surface);
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
 .footer-custom {
     background-color: var(--bg-surface);
     color: var(--text-muted);
@@ -140,4 +127,264 @@ body {
 .footer-links a:hover {
     color: var(--primary);
 
+}
+.custom_post_submission .modal-dialog {
+    max-width: 800px; 
+    max-height: 90vh;
+}
+
+.custom_post_submission .modal-content {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-normal);
+
+}
+.add_post {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1030;
+}
+.add_post .mb-3 {
+    margin: 0 !important;
+    border-radius: var(--radius-pill);
+    font-size: larger;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.add_post .mb-3 i {
+    margin: 0;
+    line-height: 1;
+}
+
+
+
+
+
+
+/* . Cartes & Composants dInterface */
+.card-custom {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    height: 100%;
+}
+
+
+.custom-subhead{
+    padding-left: 14rem;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    
+}
+
+.feed-post-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.3);
+}
+
+.card-icon-wrapper {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+/* . Formulaire Moderne (PAS DANS UN TABLEAU) */
+.form-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
+}
+
+.form-step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 2px solid var(--border-color-subtle);
+}
+
+.step-number {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+}
+
+.form-control, .form-select {
+    background-color: var(--bg-surface-subtle);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    transition: all var(--transition-fast);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--bg-surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-glow);
+    color: var(--text-main);
+}
+
+/* Radio & Checkbox Card Selection */
+.custom-radio-card, .custom-check-card {
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    background: var(--bg-surface-subtle);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    user-select: none;
+    height: 100%;
+}
+
+.custom-radio-card:hover, .custom-check-card:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+.custom-radio-card.active, .custom-check-card.active {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+    box-shadow: 0 2px 8px var(--primary-glow);
+}
+
+/* Recapitulatif Direct & Live Preview */
+.live-summary-card {
+    background: linear-gradient(145deg, var(--bg-surface), var(--bg-surface-subtle));
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    position: sticky;
+    top: 90px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.9rem;
+}
+
+.summary-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.summary-value {
+    color: var(--text-main);
+    font-weight: 600;
+    text-align: right;
+    max-width: 60%;
+}
+
+.max-w-700 {
+    max-width: 700px;
+}
+
+/* . Boutons Stylises */
+.btn {
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--primary-glow);
+}
+
+.btn-success {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: var(--secondary-dark);
+    border-color: var(--secondary-dark);
+    transform: translateY(-2px);
+}
+
+
+/* . Animations */
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spin-slow {
+    animation: spinSlow 8s linear infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+.pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
 }

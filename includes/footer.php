@@ -1,4 +1,4 @@
-    </main>
+git    </main>
 
     <!-- Pied de Page (Footer) -->
     <footer class="footer-custom">
@@ -16,13 +16,13 @@
                         Plateforme collaborative dediee a linnovation, a la transition energetique et aux projets techniques dingenierie pour les etudiants de l<strong>ECAM-EPMI (RAN - 1AE)</strong>.
                     </p>
                     <div class="d-flex gap-2 footer-social-links">
-                        <a href="https://epmi.ymag.cloud" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="Ypareo ECAM-EPMI" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+                        <a href="https://www.ecam-epmi.fr" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="Ypareo ECAM-EPMI" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                             <i class="bi bi-mortarboard-fill"></i>
                         </a>
-                        <a href="https://github.com" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="GitHub" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+                        <a href="https://github.com/Fadi-ri/eco_smart" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="GitHub" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                             <i class="bi bi-github"></i>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="LinkedIn" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
+                        <a href="https://linkedin.com/" target="_blank" class="btn btn-outline-secondary btn-sm rounded-circle p-2" title="LinkedIn" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                             <i class="bi bi-linkedin"></i>
                         </a>
                     </div>
@@ -59,14 +59,12 @@
                         <i class="bi bi-geo-alt-fill text-danger me-1"></i> 13 Boulevard de l'Hautil, 95092 Cergy-Pontoise Cedex
                     </p>
                     <p class="text-muted small mb-2">
-                        <i class="bi bi-envelope-fill text-primary me-1"></i> contact-ran@epmi-edu.fr
+                        <i class="bi bi-envelope-fill text-primary me-1"></i> contact@ecam-epmi.com
                     </p>
                     <p class="text-muted small mb-3">
                         <i class="bi bi-telephone-fill text-success me-1"></i> +33 (0)1 30 75 60 40
                     </p>
-                    <div class="badge bg-primary-subtle text-primary border border-primary-subtle p-2">
-                        <i class="bi bi-calendar3 me-1"></i> Rendu Projet : 31 Octobre 2026
-                    </div>
+
                 </div>
             </div>
 
@@ -75,13 +73,13 @@
             <!-- Bas de page & Technologies -->
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
                 <p class="text-muted small m-0">
-                    &copy; <?= APP_YEAR ?> <strong><?= APP_NAME ?></strong> — Projet Developpement Web RAN 1AE. Tous droits reserves.
+                    &copy; <?= APP_YEAR ?> <strong><?= APP_NAME ?></strong> — Projet Developpement Web RAN 1AE.
                 </p>
                 <div class="d-flex flex-wrap gap-2">
                     <span class="badge bg-dark-subtle text-body border small">HTML5</span>
                     <span class="badge bg-dark-subtle text-body border small">CSS3</span>
                     <span class="badge bg-dark-subtle text-body border small">JavaScript ES6</span>
-                    <span class="badge bg-dark-subtle text-body border small">PHP 8 / PDO</span>
+                    <span class="badge bg-dark-subtle text-body border small">PHP </span>
                     <span class="badge bg-dark-subtle text-body border small">MySQL</span>
                     <span class="badge bg-dark-subtle text-body border small">Bootstrap 5.3</span>
                     <span class="badge bg-dark-subtle text-body border small">jsPDF</span>

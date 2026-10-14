@@ -33,6 +33,44 @@ function display_flash(): string
 		. '</div>';
 }
 
+function get_status_badge(string $statut): string
+{
+	$styles = [
+		'Valide'     => 'bg-success-subtle text-success',
+		'En cours'   => 'bg-primary-subtle text-primary',
+		'En attente' => 'bg-warning-subtle text-warning',
+		'Termine'    => 'bg-secondary-subtle text-secondary',
+		'Rejete'     => 'bg-danger-subtle text-danger',
+	];
+	$class = $styles[$statut] ?? 'bg-secondary-subtle text-secondary';
+
+	return '<span class="badge ' . $class . ' small fw-semibold">' . e($statut) . '</span>';
+}
+
+function format_currency(float $amount): string
+{
+	return number_format($amount, 0, ',', ' ') . ' €';
+}
+
+function format_date(string $date): string
+{
+	$timestamp = strtotime($date);
+	return $timestamp ? date('d/m/Y', $timestamp) : e($date);
+}
+
+function generate_csrf_token(): string
+{
+	if (empty($_SESSION['csrf_token'])) {
+		$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+	}
+	return $_SESSION['csrf_token'];
+}
+
+function verify_csrf_token(?string $token): bool
+{
+	return isset($_SESSION['csrf_token']) && is_string($token) && hash_equals($_SESSION['csrf_token'], $token);
+}
+
 function get_project_stats(PDO $pdo): array
 {
 	$stats = [
