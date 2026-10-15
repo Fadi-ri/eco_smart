@@ -27,7 +27,7 @@ if ($pdo) {
     } catch (Exception $e) {}
 }
 
-require_once __DIR__ . '/includes/hearder.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <!-- Hero Section -->
@@ -59,3 +59,4 @@ require_once __DIR__ . '/includes/hearder.php';
                 </div>
             </div>
 
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

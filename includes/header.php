@@ -44,15 +44,6 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
                 <span><?= APP_NAME ?></span>
             </a>
 
-            <!-- Boutons Mobiles (Dark Mode + Hamburger) -->
-            <div class="d-flex align-items-center gap-2 d-lg-none">
-                <button type="button" class="theme-toggle-btn js-theme-toggle" aria-label="Changer de theme">
-                    <i class="bi bi-moon-stars-fill"></i>
-                </button>
-                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Basculer la navigation">
-                    <i class="bi bi-list fs-2"></i>
-                </button>
-            </div>
 
             <!-- Liens de Navigation -->
             <div class="collapse navbar-collapse" id="navbarMain">
@@ -106,3 +97,4 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
             <?= display_flash() ?>
 
         </div>
+
