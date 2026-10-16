@@ -1,7 +1,9 @@
-```php
 <?php
 session_start();
 
+require_once __DIR__ . '/config.php';
+
+$pageTitle = "Connexion - EcoSmart Lab";
 $erreur = '';
 $email = '';
 
@@ -14,125 +16,124 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($mot_de_passe === '') {
         $erreur = "Veuillez saisir votre mot de passe.";
     } else {
-        $erreur = "La vérification du compte sera ajoutée à l'étape suivante.";
+        try {
+            $pdo = Database::getConnection();
+
+            $requete = $pdo->prepare(
+                'SELECT id, nom, email, mot_de_passe
+                 FROM utilisateurs
+                 WHERE email = ?'
+            );
+
+            $requete->execute([$email]);
+            $utilisateur = $requete->fetch(PDO::FETCH_ASSOC);
+
+            if (
+                $utilisateur &&
+                password_verify(
+                    $mot_de_passe,
+                    $utilisateur['mot_de_passe']
+                )
+            ) {
+                session_regenerate_id(true);
+
+                $_SESSION['utilisateur_id'] = $utilisateur['id'];
+                $_SESSION['utilisateur_nom'] = $utilisateur['nom'];
+                $_SESSION['utilisateur_email'] = $utilisateur['email'];
+
+                header('Location: index.php');
+                exit;
+            } else {
+                $erreur = "Adresse e-mail ou mot de passe incorrect.";
+            }
+        } catch (PDOException $e) {
+            $erreur = "Impossible de vérifier le compte pour le moment.";
+        }
     }
 }
+
+require_once __DIR__ . '/includes/hearder.php';
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - EcoSmart</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-            background: #f0f7f1;
-        }
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
 
-        .connexion {
-            width: 100%;
-            max-width: 420px;
-            padding: 35px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        }
+            <div class="card shadow p-4">
+                <div class="text-center mb-4">
+                    <h1 class="h3">Connexion</h1>
+                    <p class="text-secondary">
+                        Bienvenue sur EcoSmart Lab
+                    </p>
+                </div>
 
-        h1 {
-            margin-top: 0;
-            color: #237447;
-            text-align: center;
-        }
+                <?php if ($erreur !== ''): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= htmlspecialchars(
+                            $erreur,
+                            ENT_QUOTES,
+                            'UTF-8'
+                        ) ?>
+                    </div>
+                <?php endif; ?>
 
-        .description {
-            margin-bottom: 25px;
-            color: #666;
-            text-align: center;
-        }
+                <form method="POST" action="login.php">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            Adresse e-mail
+                        </label>
 
-        label {
-            display: block;
-            margin: 16px 0 7px;
-            font-weight: bold;
-        }
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            value="<?= htmlspecialchars(
+                                $email,
+                                ENT_QUOTES,
+                                'UTF-8'
+                            ) ?>"
+                            placeholder="exemple@email.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
 
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
+                    <div class="mb-3">
+                        <label for="mot_de_passe" class="form-label">
+                            Mot de passe
+                        </label>
 
-        button {
-            width: 100%;
-            margin-top: 24px;
-            padding: 13px;
-            border: none;
-            border-radius: 8px;
-            background: #237447;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="mot_de_passe"
+                            name="mot_de_passe"
+                            placeholder="Votre mot de passe"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
 
-        button:hover {
-            background: #195b36;
-        }
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100"
+                    >
+                        Se connecter
+                    </button>
+                </form>
 
-        .erreur {
-            padding: 12px;
-            border-radius: 8px;
-            background: #fff0f0;
-            color: #a32222;
-        }
-    </style>
-</head>
-<body>
-    <main class="connexion">
-        <h1>EcoSmart</h1>
-        <p class="description">Connectez-vous à votre espace</p>
+                <p class="text-center mt-4 mb-0">
+                    Pas encore de compte ?
+                    <a href="inscription.php">Créer un compte</a>
+                </p>
+            </div>
 
-        <?php if ($erreur !== ''): ?>
-            <p class="erreur" role="alert">
-                <?= htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8') ?>
-            </p>
-        <?php endif; ?>
+        </div>
+    </div>
+</section>
 
-        <form method="POST" action="login.php">
-            <label for="email">Adresse e-mail</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>"
-                autocomplete="email"
-                required
-            >
-
-            <label for="mot_de_passe">Mot de passe</label>
-            <input
-                type="password"
-                id="mot_de_passe"
-                name="mot_de_passe"
-                autocomplete="current-password"
-                required
-            >
-
-            <button type="submit">Se connecter</button>
-        </form>
-    </main>
-</body>
-</html>
+<?php
+require_once __DIR__ . '/includes/footer.php';
+?>
 ```
