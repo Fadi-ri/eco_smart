@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdo = Database::getConnection();
 
             $requete = $pdo->prepare(
-                'SELECT id, nom, email, mot_de_passe
-                 FROM utilisateurs
+                'SELECT id, nom, prenom, email, mot_de_passe
+                 FROM users
                  WHERE email = ?'
             );
 
@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $_SESSION['utilisateur_id'] = $utilisateur['id'];
                 $_SESSION['utilisateur_nom'] = $utilisateur['nom'];
+                $_SESSION['utilisateur_prenom'] = $utilisateur['prenom'];
                 $_SESSION['utilisateur_email'] = $utilisateur['email'];
 
                 header('Location: index.php');
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require_once __DIR__ . '/includes/hearder.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <section class="container py-5">

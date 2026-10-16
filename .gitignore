@@ -2,3 +2,9 @@
 database.sqlite
 database.sql
 /Applications/XAMPP/xamppfiles/htdocs/.php-preview-router.php
+.claude/
+.php-preview-router.php
+.vscode/
+debug_upload.php
+git
+uploads/

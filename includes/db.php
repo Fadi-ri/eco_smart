@@ -25,6 +25,17 @@ try {
         besoin_laboratoire TEXT DEFAULT 'Non', description TEXT, statut TEXT DEFAULT 'En attente',
         created_at TEXT DEFAULT CURRENT_TIMESTAMP
     )");
+
+    $pdo->exec("CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nom TEXT NOT NULL,
+        prenom TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        mot_de_passe TEXT NOT NULL,
+        role TEXT DEFAULT 'Etudiant',
+        date_creation TEXT DEFAULT CURRENT_TIMESTAMP,
+        date_modification TEXT DEFAULT CURRENT_TIMESTAMP
+    )");
 }
 
 // Fonction d'acces direct a la base
