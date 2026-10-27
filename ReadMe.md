@@ -206,18 +206,18 @@ You will find the color pallet from Kay's work in the style.css file and we are 
     <h1 style="color: blue;">Front-end</h1>
 
     --fadi--
+  updates for team good to know before worrking on this part of the project
+
     <br>
     * dark mode : finished, you can count on it now. js/main.js holds the three functions that were only called and never written, so the file does not throw anymore :
     - initThemeManager() reads the choice in localStorage ('ecosmart-theme'), falls back on prefers-color-scheme if the visitor never chose, binds the toggle and keeps following the system preference as long as nothing was chosen
     - initBootstrapComponents() mounts the tooltips, the popovers, and the chaining of the two modals of projets.php
     - initInteractiveUI() does the smooth scroll, the animated counters, the back to top and the auto closing of the flash messages
     * the theme is applied by a small inline script in the <head> BEFORE the css, otherwise you get a white flash on every page load when you are in dark. that script also puts data-bs-theme on <html>, that is what makes the bootstrap components (modals, dropdowns, form-control, accordion, the bg-*-subtle badges) follow the theme on their own without a single line of css from us
-    * there is a second toggle next to the burger for mobile, the old one was in a d-none d-lg-flex so there was no way to switch the theme on a phone. the burger button itself did not exist either, the navbar simply could not open under 992px. the two toggles reuse the round button of the footer (btn btn-outline-secondary rounded-circle) instead of a custom class
     * the animated counters print their real value in the html with counter_value(), the javascript only animates from 0 to that value. if js is off you read the real number and not a 0. same idea for prefers-reduced-motion, the counter jumps straight to the final value
     * js/contact-validation.js for the live validation of the contact form (counter of characters, is-valid / is-invalid on blur, focus on the first wrong field at the submit)
     * footer.php : the Contact link was missing in the Navigation column, added, plus a "Nous ecrire" button in the Campus block and the back to top button. .footer-title and .text-purple were written in the html but had no style anywhere, replaced by fw-bold mb-3 and text-primary
      still to do :
-    - the single project page. the detail is there but as a bootstrap modal filled from the data-* of the card (projets.php), so there is no url per project, you cannot share a link or refresh on a project
     - admin.php, the navbar and the footer both link to it and it is an empty file
     - create_post.php still writes 'Admin' as the author, it has to read the session (already on the list since the 16/10)
     - the messages sent from contact.php are only stored in the table, there is no screen to read them, it will probably be a tab of the future CRUD dashboard
@@ -234,7 +234,6 @@ You will find the color pallet from Kay's work in the style.css file and we are 
 
     --fadi--
     <br>
-    * the contact form goes through the same rules as the submission form : csrf token, everything echoed through e(), prepared statement for the insert, and the sujet is validated against a whitelist server side, never trust the fact that it comes from a <select>
     * display_flash() is called once in the header now, so a page cannot print the flash twice
 
     --
