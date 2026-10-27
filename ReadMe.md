@@ -83,7 +83,11 @@ You will find the color pallet from Kay's work in the style.css file and we are 
     
     * connection parameters for Mysql /XAMPP in db.php
      
-    --
+    --oral--
+    17/10/2026
+    * finalized the crud by adding every basic functions : create the project, read/view his projects, update his projects, and delete it.
+
+    * added files : update.php,delete.php and i finalized the admin.php file.
 
 
 * For now 16/10/2026
