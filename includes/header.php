@@ -17,10 +17,6 @@ $navLinks = [
     ['file' => 'a_propos.php',    'label' => 'A Propos',               'icon' => 'bi-info-circle'],
     ['file' => 'contact.php',     'label' => 'Contact',                'icon' => 'bi-envelope'],
 ];
-
-// Bouton de bascule du theme : meme habillage que les boutons ronds du footer
-$themeBtnClass = 'btn btn-outline-secondary btn-sm rounded-circle p-2 js-theme-toggle';
-$themeBtnStyle = 'width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;';
 ?>
 <!DOCTYPE html>
 <html lang="fr" data-theme="light" data-bs-theme="light">
@@ -66,7 +62,7 @@ $themeBtnStyle = 'width: 38px; height: 38px; display: inline-flex; align-items: 
 <body>
 
     <!-- Barre de Navigation Superieure -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <nav class="navbar navbar-expand navbar-custom sticky-top">
         <div class="container">
             <!-- Logo & Nom -->
             <a class="navbar-brand" href="index.php">
@@ -76,19 +72,8 @@ $themeBtnStyle = 'width: 38px; height: 38px; display: inline-flex; align-items: 
                 <span><?= APP_NAME ?></span>
             </a>
 
-            <!-- Bascule theme (visible en mobile, a cote du burger) + bouton burger -->
-            <div class="d-flex align-items-center gap-2 d-lg-none">
-                <button type="button" class="<?= $themeBtnClass ?>" style="<?= $themeBtnStyle ?>"
-                        title="Basculer theme sombre / clair" aria-label="Basculer le theme">
-                    <i class="bi bi-moon-stars-fill"></i>
-                </button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Afficher la navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-
             <!-- Liens de Navigation -->
-            <div class="collapse navbar-collapse" id="navbarMain">
+            <div class="navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
                     <?php foreach ($navLinks as $link): ?>
                         <li class="nav-item">
@@ -102,8 +87,9 @@ $themeBtnStyle = 'width: 38px; height: 38px; display: inline-flex; align-items: 
                 </ul>
 
                 <!-- Actions de droite (Dark Mode ) -->
-                <div class="d-none d-lg-flex align-items-center gap-3">
-                    <button type="button" class="<?= $themeBtnClass ?>" style="<?= $themeBtnStyle ?>"
+                <div class="d-flex align-items-center gap-3">
+                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle p-2 js-theme-toggle"
+                            style="width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;"
                             title="Basculer theme sombre / clair" aria-label="Basculer le theme">
                         <i class="bi bi-moon-stars-fill"></i>
                     </button>

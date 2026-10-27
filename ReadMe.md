@@ -178,7 +178,7 @@ You will find the color pallet from Kay's work in the style.css file and we are 
 
 * For now 27/10/2026
     <h1 style="color: blue;">General project architecture and organizing</h1>
-    the three placeholder files that were still empty in the repo are written : index.php is finished, a_propos.php and contact.php exist for real now. admin.php is the only one left empty, nobody has started the CRUD dashboard yet so the link in the navbar still lands on a blank page, that one is up for grabs
+    the three placeholder files that were still empty in the repo are written : index.php is finished, a_propos.php and contact.php exist for real now. admin.php arrived in parallel with the crud PR, so there is no empty file left in the repo. it uses the shared header/footer so it picked up the new navbar and the dark mode without anything to change on your side
     the navbar is generated from a $navLinks array at the top of includes/header.php, if you add a page just add a line there instead of copy pasting a <li>
     contact.php follows the pattern we agreed on : the page only displays, the traitement is in actions/contact.php, like actions/create.php for the submission form
     small thing but it was visible on every single page : includes/footer.php started with a stray "git" glued to the </main>, so the word was printed at the top of every footer. removed
@@ -192,7 +192,6 @@ You will find the color pallet from Kay's work in the style.css file and we are 
     - dark mode (finished, see below)
 
     still a work in progress ordered by urgency :
-                - Crud dashboard page (admin.php is still an empty file)
                 - personal account page
                 - project page detail
 
@@ -212,15 +211,17 @@ You will find the color pallet from Kay's work in the style.css file and we are 
     - initBootstrapComponents() mounts the tooltips, the popovers, and the chaining of the two modals of projets.php
     - initInteractiveUI() does the smooth scroll, the animated counters, the back to top and the auto closing of the flash messages
     * the theme is applied by a small inline script in the <head> BEFORE the css, otherwise you get a white flash on every page load when you are in dark. that script also puts data-bs-theme on <html>, that is what makes the bootstrap components (modals, dropdowns, form-control, accordion, the bg-*-subtle badges) follow the theme on their own without a single line of css from us
-    * there is a second toggle next to the burger for mobile, the old one was in a d-none d-lg-flex so there was no way to switch the theme on a phone. the burger button itself did not exist either, the navbar simply could not open under 992px. the two toggles reuse the round button of the footer (btn btn-outline-secondary rounded-circle) instead of a custom class
+    * the theme toggle is out of its d-none d-lg-flex and is now always visible, it reuses the round button of the footer (btn btn-outline-secondary rounded-circle) instead of a custom class
+    * DECISION : no mobile navigation. the navbar is navbar-expand (not navbar-expand-lg) so it stays deployed at every width, there is no burger and no second toggle. under ~900px the links wrap on two or three lines instead of folding into a menu, this is expected, do not "fix" it by putting the navbar-toggler back. the app is meant to be looked at on a laptop
     * the animated counters print their real value in the html with counter_value(), the javascript only animates from 0 to that value. if js is off you read the real number and not a 0. same idea for prefers-reduced-motion, the counter jumps straight to the final value
     * js/contact-validation.js for the live validation of the contact form (counter of characters, is-valid / is-invalid on blur, focus on the first wrong field at the submit)
     * footer.php : the Contact link was missing in the Navigation column, added, plus a "Nous ecrire" button in the Campus block and the back to top button. .footer-title and .text-purple were written in the html but had no style anywhere, replaced by fw-bold mb-3 and text-primary
      still to do :
     - the single project page. the detail is there but as a bootstrap modal filled from the data-* of the card (projets.php), so there is no url per project, you cannot share a link or refresh on a project
-    - admin.php, the navbar and the footer both link to it and it is an empty file
+    - the crud dashboard (admin.php) landed from the crud branch while these pages were being written, it has not been reread with the dark theme and the new navbar, worth a quick pass
     - create_post.php still writes 'Admin' as the author, it has to read the session (already on the list since the 16/10)
     - the messages sent from contact.php are only stored in the table, there is no screen to read them, it will probably be a tab of the future CRUD dashboard
+    - NOT on the list on purpose : the mobile navigation, see the DECISION above
 
     <h1 style="color: blue;">Back-end</h1>
 

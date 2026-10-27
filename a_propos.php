@@ -40,10 +40,16 @@ $team = [
     ],
     [
         'initials' => 'KY',
-        'name'     => 'Kay',
+        'name'     => 'Drubea konhu	',
         'role'     => 'Designer UI / UX',
         'tasks'    => ['Identite visuelle & maquettes Figma', 'Palette de couleurs', 'Theme clair / sombre'],
     ],
+    [
+        'initials'=> 'ON',
+        'name'=> 'Oral Nzenque',
+        'role'=>'Developpeur',
+        'tasks' => ['CRUDE front-end', 'CRUDE back-end','CRUDE design']
+        ],
 ];
 
 // Frise des grandes etapes du projet
@@ -66,49 +72,50 @@ $milestones = [
     [
         'date'  => '27 Octobre 2026',
         'title' => 'Finalisation de lexperience',
-        'text'  => 'Page daccueil complete, pages A Propos et Contact, theme sombre persistant et navigation mobile.',
+        'text'  => 'Page daccueil complete, pages A Propos et Contact, theme sombre persistant et adaptation mobile.',
     ],
 ];
 
 // Valeurs mises en avant par le laboratoire
 $values = [
-    ['icon' => 'bi-recycle',        'color' => 'bg-success-subtle text-success', 'title' => 'Eco-responsabilite', 'text' => 'Chaque projet est evalue sur son impact energetique et environnemental, de la conception au prototype.'],
-    ['icon' => 'bi-people-fill',    'color' => 'bg-primary-subtle text-primary', 'title' => 'Collaboration',      'text' => 'Les travaux sont partages entre promotions et filieres pour eviter de repartir de zero a chaque semestre.'],
-    ['icon' => 'bi-lightbulb-fill', 'color' => 'bg-warning-subtle text-warning', 'title' => 'Innovation',         'text' => 'Des prototypes concrets : micro-reseaux solaires, robotique dinspection, jumeaux numeriques, IA predictive.'],
-    ['icon' => 'bi-journal-text',   'color' => 'bg-info-subtle text-info',       'title' => 'Transparence',       'text' => 'Budget, planning et statut davancement sont visibles publiquement pour chaque initiative deposee.'],
+    ['icon' => 'bi-recycle',         'color' => 'bg-success-subtle text-success', 'title' => 'Eco-responsabilite',  'text' => 'Chaque projet est evalue sur son impact energetique et environnemental, de la conception au prototype.'],
+    ['icon' => 'bi-people-fill',     'color' => 'bg-primary-subtle text-primary', 'title' => 'Collaboration',       'text' => 'Les travaux sont partages entre promotions et filieres pour eviter de repartir de zero a chaque semestre.'],
+    ['icon' => 'bi-lightbulb-fill',  'color' => 'bg-warning-subtle text-warning', 'title' => 'Innovation',          'text' => 'Des prototypes concrets : micro-reseaux solaires, robotique dinspection, jumeaux numeriques, IA predictive.'],
+    ['icon' => 'bi-journal-text',    'color' => 'bg-info-subtle text-info',       'title' => 'Transparence',        'text' => 'Budget, planning et statut davancement sont visibles publiquement pour chaque initiative deposee.'],
 ];
 
 // Technologies utilisees pour construire la plateforme
 $stack = [
-    ['icon' => 'bi-filetype-html', 'name' => 'HTML5',         'desc' => 'Structure semantique et accessible'],
-    ['icon' => 'bi-filetype-css',  'name' => 'CSS3',          'desc' => 'Variables CSS, theme clair / sombre'],
-    ['icon' => 'bi-bootstrap',     'name' => 'Bootstrap 5.3', 'desc' => 'Grille responsive et composants'],
-    ['icon' => 'bi-filetype-js',   'name' => 'JavaScript',    'desc' => 'Validation live, filtres, animations'],
-    ['icon' => 'bi-filetype-php',  'name' => 'PHP 8',         'desc' => 'Traitements serveur et securite'],
-    ['icon' => 'bi-database-fill', 'name' => 'MySQL',         'desc' => 'PDO, requetes preparees, repli SQLite'],
+    ['icon' => 'bi-filetype-html', 'name' => 'HTML5',        'desc' => 'Structure semantique et accessible'],
+    ['icon' => 'bi-filetype-css',  'name' => 'CSS3',         'desc' => 'Variables CSS, theme clair / sombre'],
+    ['icon' => 'bi-bootstrap',     'name' => 'Bootstrap 5.3','desc' => 'Grille responsive et composants'],
+    ['icon' => 'bi-filetype-js',   'name' => 'JavaScript',   'desc' => 'Validation live, filtres, animations'],
+    ['icon' => 'bi-filetype-php',  'name' => 'PHP 8',        'desc' => 'Traitements serveur et securite'],
+    ['icon' => 'bi-database-fill', 'name' => 'MySQL',        'desc' => 'PDO, requetes preparees, repli SQLite'],
 ];
 
 require_once __DIR__ . '/includes/header.php';
 ?>
 
 <!-- En-tete de la page -->
-<section class="py-5">
+<section class="hero-section">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-7">
-                <span class="badge bg-primary-subtle text-primary fw-semibold rounded-pill px-3 py-2 mb-3">
-                    <i class="bi bi-info-circle-fill"></i> Projet Developpement Web • RAN 1AE
-                </span>
-                <h1 class="display-5 fw-bold lh-1 mb-3">
+                <div class="hero-badge">
+                    <i class="bi bi-info-circle-fill text-primary"></i>
+                    <span>Projet Developpement Web • RAN 1AE</span>
+                </div>
+                <h1 class="hero-title">
                     Un laboratoire etudiant dedie a
                     <span class="gradient-text">lingenierie durable</span>
                 </h1>
-                <p class="lead text-muted mb-4">
+                <p class="hero-lead">
                     EcoSmart Lab est la plateforme collaborative des etudiants de lECAM-EPMI. Elle centralise le depot,
                     le suivi et la valorisation des projets techniques : energies renouvelables, intelligence artificielle,
                     robotique, mobilite electrique et genie industriel.
                 </p>
-                <div class="d-flex flex-wrap gap-3">
+                <div class="d-flex flex-wrap gap-3 hero-buttons">
                     <a href="projets.php" class="btn btn-primary btn-lg">
                         <i class="bi bi-compass"></i> Voir les projets
                     </a>
@@ -119,33 +126,43 @@ require_once __DIR__ . '/includes/header.php';
             </div>
 
             <div class="col-lg-5">
-                <div class="card-custom p-4">
-                    <h2 class="h6 fw-bold mb-2">
+                <div class="hero-visual">
+                    <span class="hero-visual-ring"></span>
+                    <h2 class="h6 fw-bold mb-3">
                         <i class="bi bi-bullseye text-primary me-1"></i> Le Lab en chiffres
                     </h2>
 
-                    <?php
-                    $heroMetrics = [
-                        ['icon' => 'bi-folder2-open', 'class' => 'bg-primary-subtle text-primary', 'value' => (int) $stats['total'],        'suffix' => '',   'label' => 'Projets referencees'],
-                        ['icon' => 'bi-cash-coin',    'class' => 'bg-success-subtle text-success', 'value' => (int) $stats['budget_total'], 'suffix' => ' €', 'label' => 'Budget cumule accompagne'],
-                        ['icon' => 'bi-diagram-3',    'class' => 'bg-warning-subtle text-warning', 'value' => 5,                            'suffix' => '',   'label' => 'Poles dingenierie'],
-                        ['icon' => 'bi-people',       'class' => 'bg-info-subtle text-info',       'value' => count($team),                 'suffix' => '',   'label' => 'Membres de lequipe projet'],
-                    ];
-                    $lastMetric = array_key_last($heroMetrics);
-                    ?>
-                    <?php foreach ($heroMetrics as $key => $metric): ?>
-                        <div class="d-flex align-items-center gap-3 py-3 <?= $key === $lastMetric ? 'pb-0' : 'border-bottom' ?>">
-                            <span class="card-icon-wrapper mb-0 flex-shrink-0 <?= $metric['class'] ?>">
-                                <i class="bi <?= $metric['icon'] ?>"></i>
-                            </span>
-                            <div>
-                                <div class="h4 fw-bold mb-0 js-counter"
-                                     data-target="<?= $metric['value'] ?>"
-                                     <?= $metric['suffix'] !== '' ? 'data-suffix="' . e($metric['suffix']) . '"' : '' ?>><?= counter_value($metric['value'], $metric['suffix']) ?></div>
-                                <div class="small text-muted"><?= e($metric['label']) ?></div>
-                            </div>
+                    <div class="hero-metric">
+                        <span class="hero-metric-icon bg-primary-subtle text-primary"><i class="bi bi-folder2-open"></i></span>
+                        <div>
+                            <div class="hero-metric-value js-counter" data-target="<?= (int) $stats['total'] ?>"><?= counter_value((int) $stats['total']) ?></div>
+                            <div class="hero-metric-label">Projets referencees</div>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+
+                    <div class="hero-metric">
+                        <span class="hero-metric-icon bg-success-subtle text-success"><i class="bi bi-cash-coin"></i></span>
+                        <div>
+                            <div class="hero-metric-value js-counter" data-target="<?= (int) $stats['budget_total'] ?>" data-suffix=" €"><?= counter_value((int) $stats['budget_total'], ' €') ?></div>
+                            <div class="hero-metric-label">Budget cumule accompagne</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-metric">
+                        <span class="hero-metric-icon bg-warning-subtle text-warning"><i class="bi bi-diagram-3"></i></span>
+                        <div>
+                            <div class="hero-metric-value js-counter" data-target="5"><?= counter_value(5) ?></div>
+                            <div class="hero-metric-label">Poles dingenierie</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-metric">
+                        <span class="hero-metric-icon bg-info-subtle text-info"><i class="bi bi-people"></i></span>
+                        <div>
+                            <div class="hero-metric-value js-counter" data-target="<?= count($team) ?>"><?= counter_value(count($team)) ?></div>
+                            <div class="hero-metric-label">Membres de lequipe projet</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,18 +170,18 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Mission & Objectifs -->
-<section class="py-5">
+<section class="section-padded">
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
-                <span class="badge bg-primary-subtle text-primary fw-semibold mb-2">Notre mission</span>
-                <h2 class="fw-bold mb-3">Donner une vie apres la soutenance aux projets etudiants</h2>
+                <span class="section-eyebrow">Notre mission</span>
+                <h2 class="section-title">Donner une vie apres la soutenance aux projets etudiants</h2>
                 <p class="text-muted">
                     Chaque annee, des dizaines de prototypes, maquettes et travaux de recherche sont realises a lECAM-EPMI,
                     puis oublies dans un disque dur. EcoSmart Lab a ete concu pour rompre ce cycle : un espace unique ou
                     chaque projet est decrit, documente, suivi et consultable par les promotions suivantes.
                 </p>
-                <ul class="list-unstyled d-grid gap-3 mt-4 m-0">
+                <ul class="list-unstyled d-grid gap-3 mt-4">
                     <li class="d-flex gap-3">
                         <i class="bi bi-check-circle-fill text-success fs-5"></i>
                         <span><strong>Centraliser</strong> le depot des projets dans un formulaire unique et structure.</span>
@@ -187,7 +204,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="col-lg-6">
                 <div class="row g-4">
                     <?php foreach ($values as $value): ?>
-                        <div class="col-md-6">
+                        <div class="col-md-6 reveal-on-scroll">
                             <div class="card-custom p-4">
                                 <span class="card-icon-wrapper <?= $value['color'] ?>">
                                     <i class="bi <?= $value['icon'] ?>"></i>
@@ -203,34 +220,29 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Etapes du projet -->
-<section class="py-5">
+<!-- Frise chronologique du projet -->
+<section class="section-padded">
     <div class="container">
         <div class="row g-5">
-            <div class="col-lg-4">
-                <span class="badge bg-primary-subtle text-primary fw-semibold mb-2">Historique</span>
-                <h2 class="fw-bold mb-3">Les etapes du developpement</h2>
-                <p class="text-muted">
+            <div class="col-lg-5">
+                <span class="section-eyebrow">Historique</span>
+                <h2 class="section-title">Les etapes du developpement</h2>
+                <p class="section-subtitle">
                     EcoSmart Lab est un projet pedagogique mene sur le semestre dans le cadre du module
                     Developpement Web du cycle preparatoire ingenieur (RAN - 1AE).
                 </p>
-                <a href="https://github.com/Fadi-ri/eco_smart" target="_blank" rel="noopener" class="btn btn-outline-primary mt-2">
+                <a href="https://github.com/Fadi-ri/eco_smart" target="_blank" rel="noopener" class="btn btn-outline-primary mt-3">
                     <i class="bi bi-github"></i> Consulter le depot Git
                 </a>
             </div>
 
-            <div class="col-lg-8">
-                <div class="d-grid gap-3">
-                    <?php foreach ($milestones as $index => $milestone): ?>
-                        <div class="card-custom p-4 d-flex flex-row align-items-start gap-3">
-                            <span class="step-number flex-shrink-0"><?= $index + 1 ?></span>
-                            <div>
-                                <span class="badge bg-primary-subtle text-primary small fw-semibold mb-2">
-                                    <i class="bi bi-calendar3 me-1"></i> <?= e($milestone['date']) ?>
-                                </span>
-                                <h5 class="fw-bold mb-1"><?= e($milestone['title']) ?></h5>
-                                <p class="text-muted small m-0"><?= e($milestone['text']) ?></p>
-                            </div>
+            <div class="col-lg-7">
+                <div class="timeline">
+                    <?php foreach ($milestones as $milestone): ?>
+                        <div class="timeline-item reveal-on-scroll">
+                            <span class="timeline-date"><?= e($milestone['date']) ?></span>
+                            <h5 class="timeline-title"><?= e($milestone['title']) ?></h5>
+                            <p class="timeline-text"><?= e($milestone['text']) ?></p>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -240,27 +252,23 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Lequipe -->
-<section class="py-5">
+<section class="section-padded">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <span class="badge bg-primary-subtle text-primary fw-semibold mb-2">Lequipe</span>
-                <h2 class="fw-bold mb-2">Qui developpe EcoSmart Lab ?</h2>
-                <p class="text-muted m-0">
-                    Une equipe detudiants de 1ere annee du cycle ingenieur, repartie sur la conception, le developpement et la securite.
-                </p>
-            </div>
+        <div class="section-heading">
+            <span class="section-eyebrow">Lequipe</span>
+            <h2 class="section-title">Qui developpe EcoSmart Lab ?</h2>
+            <p class="section-subtitle">
+                Une equipe detudiants de 1ere annee du cycle ingenieur, repartie sur la conception, le developpement et la securite.
+            </p>
         </div>
 
         <div class="row g-4 justify-content-center">
             <?php foreach ($team as $member): ?>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card-custom p-4 text-center">
-                        <span class="card-icon-wrapper mx-auto rounded-circle bg-primary text-white fw-bold">
-                            <?= e($member['initials']) ?>
-                        </span>
-                        <h5 class="fw-bold mb-1"><?= e($member['name']) ?></h5>
-                        <p class="small text-muted mb-3"><?= e($member['role']) ?></p>
+                <div class="col-lg-4 col-md-6 reveal-on-scroll">
+                    <div class="team-card">
+                        <div class="team-avatar"><?= e($member['initials']) ?></div>
+                        <h5 class="team-name"><?= e($member['name']) ?></h5>
+                        <p class="team-role mb-3"><?= e($member['role']) ?></p>
                         <ul class="list-unstyled text-start small text-muted m-0">
                             <?php foreach ($member['tasks'] as $task): ?>
                                 <li class="mb-1">
@@ -276,23 +284,21 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Stack technique -->
-<section class="py-5">
+<section class="section-padded">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <span class="badge bg-primary-subtle text-primary fw-semibold mb-2">Technologies</span>
-                <h2 class="fw-bold mb-2">Comment la plateforme est construite</h2>
-                <p class="text-muted m-0">
-                    Un developpement sans framework back-end, pour maitriser chaque couche : du HTML semantique jusqua la requete preparee.
-                </p>
-            </div>
+        <div class="section-heading">
+            <span class="section-eyebrow">Technologies</span>
+            <h2 class="section-title">Comment la plateforme est construite</h2>
+            <p class="section-subtitle">
+                Un developpement sans framework back-end, pour maitriser chaque couche : du HTML semantique jusqua la requete preparee.
+            </p>
         </div>
 
         <div class="row g-4">
             <?php foreach ($stack as $tech): ?>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card-custom p-4 d-flex flex-row align-items-center gap-3">
-                        <span class="card-icon-wrapper mb-0 flex-shrink-0 bg-primary-subtle text-primary">
+                <div class="col-lg-4 col-md-6 reveal-on-scroll">
+                    <div class="card-custom p-4 d-flex align-items-center gap-3">
+                        <span class="card-icon-wrapper bg-primary-subtle text-primary mb-0">
                             <i class="bi <?= $tech['icon'] ?>"></i>
                         </span>
                         <div>
@@ -307,11 +313,11 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Appel a laction -->
-<section class="py-5">
+<section class="section-padded">
     <div class="container">
-        <div class="text-bg-primary rounded-4 text-center p-5">
-            <h2 class="fw-bold mb-3">Une question sur le laboratoire ?</h2>
-            <p class="mb-4 mx-auto max-w-700">
+        <div class="cta-banner reveal-on-scroll">
+            <h2>Une question sur le laboratoire ?</h2>
+            <p>
                 Etudiant, enseignant ou partenaire industriel : lequipe EcoSmart Lab repond a vos demandes
                 de collaboration, dencadrement ou dacces aux equipements.
             </p>
