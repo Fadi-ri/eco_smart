@@ -9,16 +9,17 @@ $pdo = Database::getConnection();
 $projects = [];
 $editProject = null;
 $loadError = false;
+$showTrash = ($_GET['view'] ?? '') === 'trash';
 
 // Si un identifiant est fourni dans l'URL, charge le projet à modifier.
 try {
-    if (isset($_GET['edit'])) {
+    if (isset($_GET['edit']) && !$showTrash) {
         $editId = filter_var($_GET['edit'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
 
         if ($editId === false) {
             set_flash('danger', 'Identifiant de projet invalide.');
         } else {
-            $editStmt = $pdo->prepare('SELECT * FROM projets_inscriptions WHERE id = :id');
+            $editStmt = $pdo->prepare('SELECT * FROM projets_inscriptions WHERE id = :id AND deleted_at IS NULL');
             $editStmt->execute([':id' => $editId]);
             $editProject = $editStmt->fetch();
 
@@ -28,10 +29,11 @@ try {
         }
     }
 
-    // Charge tous les projets pour remplir le tableau de gestion.
+    // Charge les projets actifs ou archivés selon la vue sélectionnée.
     $stmt = $pdo->query("
-        SELECT id, titre_projet, nom, prenom, filiere, statut, created_at
+        SELECT id, titre_projet, nom, prenom, filiere, statut, created_at, deleted_at
         FROM projets_inscriptions
+        WHERE deleted_at IS " . ($showTrash ? 'NOT NULL' : 'NULL') . "
         ORDER BY id DESC
     ");
     $projects = $stmt->fetchAll();
@@ -52,14 +54,24 @@ require_once __DIR__ . '/includes/header.php';
                 <h1 class="fw-bold mb-1">Tableau de bord des projets</h1>
                 <p class="text-muted mb-0">Consultez et gérez les projets enregistrés sur la plateforme.</p>
             </div>
-            <a href="inscription.php" class="btn btn-primary">
-                <i class="bi bi-plus-circle me-1"></i> Ajouter un projet
-            </a>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="admin.php" class="btn <?= $showTrash ? 'btn-outline-primary' : 'btn-primary' ?>">
+                    <i class="bi bi-grid me-1"></i> Projets actifs
+                </a>
+                <a href="admin.php?view=trash" class="btn <?= $showTrash ? 'btn-primary' : 'btn-outline-secondary' ?>">
+                    <i class="bi bi-trash me-1"></i> Corbeille
+                </a>
+                <?php if (!$showTrash): ?>
+                    <a href="inscription.php" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-1"></i> Ajouter un projet
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 
     <!-- Le formulaire de modification ne s'affiche que lorsqu'un projet est sélectionné. -->
-    <?php if ($editProject): ?>
+    <?php if ($editProject && !$showTrash): ?>
         <div class="card-custom p-3 p-md-4 mb-4">
             <h2 class="h5 fw-bold mb-3">Modifier le projet #<?= (int) $editProject['id'] ?></h2>
             <form action="actions/update.php" method="POST">
@@ -147,12 +159,12 @@ require_once __DIR__ . '/includes/header.php';
     <!-- Affiche une erreur, un état vide ou la liste des projets selon le résultat de la requête. -->
     <div class="card-custom p-3 p-md-4">
         <?php if ($loadError): ?>
-            <p class="text-muted mb-0">La liste des projets est indisponible.</p>
+            <p class="text-muted mb-0">La liste <?= $showTrash ? 'de la corbeille' : 'des projets' ?> est indisponible.</p>
         <?php elseif (empty($projects)): ?>
-            <p class="text-muted mb-0">Aucun projet n’a encore été enregistré.</p>
+            <p class="text-muted mb-0"><?= $showTrash ? 'La corbeille est vide.' : 'Aucun projet n’a encore été enregistré.' ?></p>
         <?php else: ?>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="h5 fw-bold mb-0">Projets enregistrés</h2>
+                <h2 class="h5 fw-bold mb-0"><?= $showTrash ? 'Projets dans la corbeille' : 'Projets enregistrés' ?></h2>
                 <span class="badge bg-secondary-subtle text-secondary">
                     <?= count($projects) ?> projet<?= count($projects) > 1 ? 's' : '' ?>
                 </span>
@@ -167,7 +179,7 @@ require_once __DIR__ . '/includes/header.php';
                             <th scope="col">Étudiant</th>
                             <th scope="col">Filière</th>
                             <th scope="col">Statut</th>
-                            <th scope="col">Date d’ajout</th>
+                            <th scope="col"><?= $showTrash ? 'Date de suppression' : 'Date d’ajout' ?></th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -179,20 +191,36 @@ require_once __DIR__ . '/includes/header.php';
                                 <td><?= e($project['prenom'] . ' ' . $project['nom']) ?></td>
                                 <td><?= e($project['filiere']) ?></td>
                                 <td><?= get_status_badge($project['statut']) ?></td>
-                                <td><?= format_date($project['created_at']) ?></td>
+                                <td><?= format_date($showTrash ? $project['deleted_at'] : $project['created_at']) ?></td>
                                 <td>
-                                    <!-- Modifier charge le formulaire ; supprimer envoie une requête POST protégée par CSRF. -->
                                     <div class="d-flex gap-2">
-                                        <a href="admin.php?edit=<?= (int) $project['id'] ?>" class="btn btn-sm btn-outline-primary" aria-label="Modifier <?= e($project['titre_projet']) ?>">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <form action="actions/delete.php" method="POST" onsubmit="return confirm('Supprimer définitivement ce projet ?');">
-                                            <input type="hidden" name="csrf_token" value="<?= e(generate_csrf_token()) ?>">
-                                            <input type="hidden" name="id" value="<?= (int) $project['id'] ?>">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" aria-label="Supprimer <?= e($project['titre_projet']) ?>">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
+                                        <?php if ($showTrash): ?>
+                                            <form action="actions/restore.php" method="POST">
+                                                <input type="hidden" name="csrf_token" value="<?= e(generate_csrf_token()) ?>">
+                                                <input type="hidden" name="id" value="<?= (int) $project['id'] ?>">
+                                                <button type="submit" class="btn btn-sm btn-outline-success" aria-label="Restaurer <?= e($project['titre_projet']) ?>" title="Restaurer">
+                                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                                </button>
+                                            </form>
+                                            <form action="actions/permanent_delete.php" method="POST" onsubmit="return confirm('Supprimer définitivement ce projet ? Cette action est irréversible.');">
+                                                <input type="hidden" name="csrf_token" value="<?= e(generate_csrf_token()) ?>">
+                                                <input type="hidden" name="id" value="<?= (int) $project['id'] ?>">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger" aria-label="Supprimer définitivement <?= e($project['titre_projet']) ?>" title="Supprimer définitivement">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        <?php else: ?>
+                                            <a href="admin.php?edit=<?= (int) $project['id'] ?>" class="btn btn-sm btn-outline-primary" aria-label="Modifier <?= e($project['titre_projet']) ?>">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <form action="actions/delete.php" method="POST" onsubmit="return confirm('Déplacer ce projet dans la corbeille ?');">
+                                                <input type="hidden" name="csrf_token" value="<?= e(generate_csrf_token()) ?>">
+                                                <input type="hidden" name="id" value="<?= (int) $project['id'] ?>">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger" aria-label="Archiver <?= e($project['titre_projet']) ?>" title="Déplacer dans la corbeille">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        <?php endif; ?>
                                     </div>
                                 </td>
                             </tr>

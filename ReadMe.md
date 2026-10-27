@@ -89,3 +89,17 @@ You will find the color pallet from Kay's work in the style.css file and we are 
 
     * added files : update.php,delete.php and i finalized the admin.php file.
 
+    27/10/2026
+    * added a trash : l'utilisateur peut récuperer ses projets supprimés
+    * modifé :
+        - `actions/restore.php` : remet un projet archivé parmi les projets actifs.
+        - `actions/permanent_delete.php` : supprime définitivement un projet qui se trouve dans la corbeille.
+        - `admin.php` : ajoute l’accès à la corbeille et affiche les actions pour restaurer ou supprimer définitivement un projet.
+        - `actions/delete.php` : au lieu de supprimer le projet, le déplace dans la corbeille.
+        - `actions/update.php` : empêche de modifier un projet tant qu’il est dans la corbeille.
+        - `includes/db.php` : ajoute à la base de données le champ qui indique si un projet est archivé, y compris pour les installations existantes.
+        - `database.sql` : prévoit ce même champ lors de la création de la base.
+       - `includes/functions.php` : exclut les projets archivés des statistiques.
+       - `projets.php` : masque les projets archivés du catalogue public.
+       - `index.php` : masque aussi les projets archivés dans les projets récents de l’accueil.
+

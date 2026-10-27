@@ -12,7 +12,7 @@ $pdo = Database::getConnection();
 $projects = [];
 if ($pdo) {
     try {
-        $stmt = $pdo->query("SELECT * FROM `projets_inscriptions` ORDER BY id DESC");
+        $stmt = $pdo->query("SELECT * FROM `projets_inscriptions` WHERE deleted_at IS NULL ORDER BY id DESC");
         $projects = $stmt->fetchAll();
     } catch (Exception $e) {}
 }

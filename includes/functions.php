@@ -82,7 +82,7 @@ function get_project_stats(PDO $pdo): array
 		'budget_total' => 0.0,
 	];
 
-	$projects = $pdo->query('SELECT statut, budget_estime FROM projets_inscriptions')->fetchAll();
+	$projects = $pdo->query('SELECT statut, budget_estime FROM projets_inscriptions WHERE deleted_at IS NULL')->fetchAll();
 	$statusKeys = [
 		'Valide' => 'valide',
 		'En cours' => 'en_cours',

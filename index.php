@@ -22,7 +22,7 @@ $stats = $pdo ? get_project_stats($pdo) : [
 $recentProjects = [];
 if ($pdo) {
     try {
-        $stmt = $pdo->query("SELECT * FROM `projets_inscriptions` ORDER BY id DESC LIMIT 3");
+        $stmt = $pdo->query("SELECT * FROM `projets_inscriptions` WHERE deleted_at IS NULL ORDER BY id DESC LIMIT 3");
         $recentProjects = $stmt->fetchAll();
     } catch (Exception $e) {}
 }

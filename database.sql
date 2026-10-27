@@ -41,7 +41,8 @@ CREATE TABLE `projets_inscriptions` (
     `description` TEXT NOT NULL,
     `statut` ENUM('En attente', 'Valide', 'En cours', 'Termine', 'Rejete') DEFAULT 'En attente',
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `deleted_at` DATETIME DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 

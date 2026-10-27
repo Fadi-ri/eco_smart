@@ -119,13 +119,13 @@ try {
             besoin_laboratoire = :besoin_laboratoire,
             description = :description,
             statut = :statut
-        WHERE id = :id
+        WHERE id = :id AND deleted_at IS NULL
     ");
     $values['id'] = $id;
     $stmt->execute($values);
 
     if ($stmt->rowCount() === 0) {
-        $check = Database::getConnection()->prepare('SELECT 1 FROM projets_inscriptions WHERE id = :id');
+        $check = Database::getConnection()->prepare('SELECT 1 FROM projets_inscriptions WHERE id = :id AND deleted_at IS NULL');
         $check->execute([':id' => $id]);
         if (!$check->fetchColumn()) {
             set_flash('danger', 'Le projet demandé est introuvable.');

@@ -23,8 +23,22 @@ try {
         filiere TEXT, titre_projet TEXT, type_projet TEXT, domaines_cles TEXT,
         budget_estime REAL DEFAULT 0, date_debut TEXT, duree_semaines INTEGER DEFAULT 4,
         besoin_laboratoire TEXT DEFAULT 'Non', description TEXT, statut TEXT DEFAULT 'En attente',
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP, deleted_at TEXT DEFAULT NULL
     )");
+}
+
+// Ajoute la colonne d'archivage aux bases déjà installées.
+$driver = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+if ($driver === 'sqlite') {
+    $columns = $pdo->query('PRAGMA table_info(projets_inscriptions)')->fetchAll();
+    $hasDeletedAt = in_array('deleted_at', array_column($columns, 'name'), true);
+} else {
+    $stmt = $pdo->query("SHOW COLUMNS FROM projets_inscriptions LIKE 'deleted_at'");
+    $hasDeletedAt = (bool) $stmt->fetch();
+}
+
+if (!$hasDeletedAt) {
+    $pdo->exec('ALTER TABLE projets_inscriptions ADD COLUMN deleted_at DATETIME DEFAULT NULL');
 }
 
 // Fonction d'acces direct a la base
@@ -42,4 +56,3 @@ class Database {
         return false;
     }
 }
-
