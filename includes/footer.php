@@ -1,4 +1,4 @@
-git    </main>
+</main>
 
     <!-- Pied de Page (Footer) -->
     <footer class="footer-custom">
@@ -30,31 +30,32 @@ git    </main>
 
                 <!-- Liens Rapides -->
                 <div class="col-lg-2 col-md-6">
-                    <h6 class="footer-title">Navigation</h6>
+                    <h6 class="fw-bold mb-3">Navigation</h6>
                     <ul class="footer-links">
                         <li><a href="index.php"><i class="bi bi-chevron-right small me-1"></i> Accueil</a></li>
                         <li><a href="projets.php"><i class="bi bi-chevron-right small me-1"></i> Innovations</a></li>
                         <li><a href="inscription.php"><i class="bi bi-chevron-right small me-1"></i> Deposer Projet</a></li>
                         <li><a href="admin.php"><i class="bi bi-chevron-right small me-1"></i> Dashboard CRUD</a></li>
                         <li><a href="a_propos.php"><i class="bi bi-chevron-right small me-1"></i> A Propos</a></li>
+                        <li><a href="contact.php"><i class="bi bi-chevron-right small me-1"></i> Contact</a></li>
                     </ul>
                 </div>
 
                 <!-- Themes Ingenieur -->
                 <div class="col-lg-3 col-md-6">
-                    <h6 class="footer-title">Poles dIngenierie</h6>
+                    <h6 class="fw-bold mb-3">Poles dIngenierie</h6>
                     <ul class="footer-links">
                         <li><a href="projets.php?filiere=energie"><i class="bi bi-lightning-charge text-success me-1"></i> Energies Renouvelables</a></li>
                         <li><a href="projets.php?filiere=ia"><i class="bi bi-cpu text-primary me-1"></i> Systemes dInformation & IA</a></li>
                         <li><a href="projets.php?filiere=robotique"><i class="bi bi-robot text-warning me-1"></i> Robotique & IoT</a></li>
-                        <li><a href="projets.php?filiere=mobilite"><i class="bi bi-ev-front text-purple me-1"></i> Smart Cities & Mobilite</a></li>
+                        <li><a href="projets.php?filiere=mobilite"><i class="bi bi-ev-front text-primary me-1"></i> Smart Cities & Mobilite</a></li>
                         <li><a href="projets.php?filiere=industrie"><i class="bi bi-gear-wide text-danger me-1"></i> Industrie 4.0 & Jumeaux</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact & Informations Ecole -->
                 <div class="col-lg-3 col-md-6">
-                    <h6 class="footer-title">Campus & Contact</h6>
+                    <h6 class="fw-bold mb-3">Campus & Contact</h6>
                     <p class="text-muted small mb-2">
                         <i class="bi bi-geo-alt-fill text-danger me-1"></i> 13 Boulevard de l'Hautil, 95092 Cergy-Pontoise Cedex
                     </p>
@@ -64,7 +65,9 @@ git    </main>
                     <p class="text-muted small mb-3">
                         <i class="bi bi-telephone-fill text-success me-1"></i> +33 (0)1 30 75 60 40
                     </p>
-
+                    <a href="contact.php" class="btn btn-primary btn-sm">
+                        <i class="bi bi-send-fill"></i> Nous ecrire
+                    </a>
                 </div>
             </div>
 
@@ -87,6 +90,13 @@ git    </main>
             </div>
         </div>
     </footer>
+
+    <!-- Bouton de retour en haut de page -->
+    <button type="button" class="btn btn-primary rounded-circle position-fixed bottom-0 start-0 m-4 d-none js-back-to-top"
+            style="width: 44px; height: 44px; padding: 0; z-index: 1035;"
+            aria-label="Revenir en haut de la page" title="Revenir en haut">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
     <!-- Scripts JavaScript Tiers (Bootstrap 5.3 Bundle, jsPDF, Chart.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

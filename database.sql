@@ -87,3 +87,15 @@ CREATE TABLE `users` (
     `date_creation` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `date_modification` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Messages envoyes depuis la page Contact
+DROP TABLE IF EXISTS `messages_contact`;
+CREATE TABLE `messages_contact` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `nom` VARCHAR(120) NOT NULL,
+    `email` VARCHAR(150) NOT NULL,
+    `sujet` VARCHAR(160) NOT NULL,
+    `message` TEXT NOT NULL,
+    `statut` ENUM('Nouveau', 'Lu', 'Traite') DEFAULT 'Nouveau',
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
