@@ -83,7 +83,11 @@ You will find the color pallet from Kay's work in the style.css file and we are 
     
     * connection parameters for Mysql /XAMPP in db.php
      
-    --
+    --oral--
+    17/10/2026
+    * finalized the crud by adding every basic functions : create the project, read/view his projects, update his projects, and delete it.
+
+    * added files : update.php,delete.php and i finalized the admin.php file.
 
 
 * For now 16/10/2026
@@ -168,5 +172,68 @@ You will find the color pallet from Kay's work in the style.css file and we are 
     * creat_acount.php for the registration, the password goes through password_hash before the insert, never store it in clear even for the tests
     * the CSRF token is generated in the submission form and verified in actions/create.php, do the same on every form you add
     * every value coming from the database or from $_POST is printed through e(), if you write a new page and you echo something raw it will be refused at the PR
+
+    --
+
+
+* For now 27/10/2026
+    <h1 style="color: blue;">General project architecture and organizing</h1>
+    the three placeholder files that were still empty in the repo are written : index.php is finished, a_propos.php and contact.php exist for real now. admin.php arrived in parallel with the crud PR, so there is no empty file left in the repo. it uses the shared header/footer so it picked up the new navbar and the dark mode without anything to change on your side
+    the navbar is generated from a $navLinks array at the top of includes/header.php, if you add a page just add a line there instead of copy pasting a <li>
+    contact.php follows the pattern we agreed on : the page only displays, the traitement is in actions/contact.php, like actions/create.php for the submission form
+    small thing but it was visible on every single page : includes/footer.php started with a stray "git" glued to the </main>, so the word was printed at the top of every footer. removed
+
+    <h1 style="color: blue;">Design UI/UX</h1>
+    what moves off the list from the 16/10 :
+
+    - landing page (hero + stats + poles + derniers projets + les 4 etapes + cta)
+    - A Propos (mission, etapes du projet, lequipe, stack technique)
+    - Contact (coordonnees, formulaire, carte OpenStreetMap, FAQ en accordeon)
+    - dark mode (finished, see below)
+
+    still a work in progress ordered by urgency :
+                - personal account page
+                - project page detail
+
+    the three new pages are built with the classes that were ALREADY in css/style.css (.card-custom, .card-icon-wrapper, .form-container, .form-step-header, .step-number, .max-w-700, .pulse-glow) plus the bootstrap utilities, so if you change the palette or the radius in style.css the new pages follow without touching anything. only 3 rules were added at the end of the file, and they are for classes that were already written in the html but had never been declared :
+    - .gradient-text (used by the h1 of index.php, there is no bootstrap equivalent for a text in degrade)
+    - .line-clamp-3 and .text-truncate-2 (used by the project cards of projets.php since the 16/10, the descriptions were simply never truncated)
+    one fix in .navbar-custom : it was calling var(--primary-glass), a variable that does not exist, so the navbar had no background at all. it uses --bg-glass now
+    careful with .card-custom, it carries height:100%, so if you stack two of them in the same column they both stretch to the full height of the column and overflow. add h-auto (bootstrap) on them like in the right column of contact.php
+    the <link> on css/responsive.css was removed from the header : the file had never been created so every page was taking a 404 on it. the breakpoints are handled by the bootstrap grid, if you really need custom rules one day recreate the file AND put the link back
+
+    <h1 style="color: blue;">Front-end</h1>
+
+    --fadi--
+  updates for team good to know before worrking on this part of the project
+
+    <br>
+    * dark mode : finished, you can count on it now. js/main.js holds the three functions that were only called and never written, so the file does not throw anymore :
+    - initThemeManager() reads the choice in localStorage ('ecosmart-theme'), falls back on prefers-color-scheme if the visitor never chose, binds the toggle and keeps following the system preference as long as nothing was chosen
+    - initBootstrapComponents() mounts the tooltips, the popovers, and the chaining of the two modals of projets.php
+    - initInteractiveUI() does the smooth scroll, the animated counters, the back to top and the auto closing of the flash messages
+    * the theme is applied by a small inline script in the <head> BEFORE the css, otherwise you get a white flash on every page load when you are in dark. that script also puts data-bs-theme on <html>, that is what makes the bootstrap components (modals, dropdowns, form-control, accordion, the bg-*-subtle badges) follow the theme on their own without a single line of css from us
+    * the animated counters print their real value in the html with counter_value(), the javascript only animates from 0 to that value. if js is off you read the real number and not a 0. same idea for prefers-reduced-motion, the counter jumps straight to the final value
+    * js/contact-validation.js for the live validation of the contact form (counter of characters, is-valid / is-invalid on blur, focus on the first wrong field at the submit)
+    * footer.php : the Contact link was missing in the Navigation column, added, plus a "Nous ecrire" button in the Campus block and the back to top button. .footer-title and .text-purple were written in the html but had no style anywhere, replaced by fw-bold mb-3 and text-primary
+     still to do :
+    - admin.php, the navbar and the footer both link to it and it is an empty file
+    - create_post.php still writes 'Admin' as the author, it has to read the session (already on the list since the 16/10)
+    - the messages sent from contact.php are only stored in the table, there is no screen to read them, it will probably be a tab of the future CRUD dashboard
+    - NOT on the list on purpose : the mobile navigation, see the DECISION above
+
+    <h1 style="color: blue;">Back-end</h1>
+
+    --fadi--
+
+    * new table messages_contact in database.sql (nom, email, sujet, message, statut, created_at). if you do not want to reimport the whole sql file it is not a problem, ensure_contact_table() in includes/functions.php creates it on the fly and handles the two engines, mysql and the sqlite fallback
+    * three helpers added in includes/functions.php : take_old_input() and old() to refill a form after a failed validation without losing what the user typed, and counter_value() for the numbers of the landing page
+    * actions/contact.php : csrf token verified first, then the validation (email with filter_var, sujet checked against a whitelist so you cannot post a value that is not in the select, message between 20 and 2000 characters, rgpd checkbox), then a prepared insert. on error it redirects back with a flash and the values are refilled
+
+    <h1 style="color: blue;">Security</h1>
+
+    --fadi--
+    <br>
+    * display_flash() is called once in the header now, so a page cannot print the flash twice
 
     --
