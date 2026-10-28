@@ -1,3 +1,4 @@
+
 <?php
 /**
  * En-tete Commun & Navigation
@@ -16,17 +17,16 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <meta name="description" content="EcoSmart Lab - Plateforme dInnovations et de Gestion de Projets dIngenierie pour les etudiants de lECAM-EPMI (1AE).">
     <meta name="author" content="Etudiants 1AE - ECAM-EPMI">
     <title><?= isset($pageTitle) ? e($pageTitle) . ' | ' . APP_NAME : APP_NAME . ' - ' . APP_SUBTITLE ?></title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
     <!-- Styles CSS Personnalises -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -36,6 +36,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <!-- Barre de Navigation Superieure -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
+
             <!-- Logo & Nom -->
             <a class="navbar-brand" href="index.php">
                 <div class="brand-icon">
@@ -44,13 +45,22 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
                 <span><?= APP_NAME ?></span>
             </a>
 
+            <!-- Bouton menu mobile -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarMain"
+                    aria-controls="navbarMain"
+                    aria-expanded="false"
+                    aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <!-- Liens de Navigation -->
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
                     <li class="nav-item">
                         <a class="nav-link <?= ($currentPage === 'feed.php') ? 'active' : '' ?>" href="feed.php">
-                            <i class="bi bi-house-door me-1"></i> Feed 
+                            <i class="bi bi-house-door me-1"></i> Feed
                         </a>
                     </li>
                     <li class="nav-item">
@@ -80,12 +90,33 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
                     </li>
                 </ul>
 
-                <!-- Actions de droite (Dark Mode ) -->
+                <!-- Actions de droite (Dark Mode) -->
                 <div class="d-none d-lg-flex align-items-center gap-3">
-                    <button type="button" class="theme-toggle-btn js-theme-toggle" title="Basculer theme sombre / clair" aria-label="Basculer theme">
+                    <button type="button"
+                            class="theme-toggle-btn js-theme-toggle"
+                            title="Basculer theme sombre / clair"
+                            aria-label="Basculer theme">
                         <i class="bi bi-moon-stars-fill"></i>
                     </button>
-                    
+                </div>
+
+                <!-- Connexion / Deconnexion -->
+                <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+                    <?php if (isset($_SESSION['utilisateur_id'])): ?>
+                        <a href="profil.php" class="text-primary text-decoration-none">
+                            <i class="bi bi-person-circle me-1"></i>
+                            <?= htmlspecialchars($_SESSION['utilisateur_nom'] ?? 'Utilisateur', ENT_QUOTES, 'UTF-8') ?>
+                        </a>
+
+                        <a href="logout.php" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-box-arrow-right me-1"></i>
+                            Se déconnecter
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php" class="btn btn-outline-primary btn-sm">
+                            Se connecter
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -95,6 +126,4 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <main class="main-content">
         <div class="container mt-3">
             <?= display_flash() ?>
-
         </div>
-
