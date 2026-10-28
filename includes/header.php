@@ -16,6 +16,7 @@ $navLinks = [
     ['file' => 'admin.php',       'label' => 'Tableau de Bord (CRUD)', 'icon' => 'bi-table'],
     ['file' => 'a_propos.php',    'label' => 'A Propos',               'icon' => 'bi-info-circle'],
     ['file' => 'contact.php',     'label' => 'Contact',                'icon' => 'bi-envelope'],
+    ['file'=> 'login.php', 'label'=> 'connexion'],
 ];
 ?>
 <!DOCTYPE html>

@@ -32,8 +32,8 @@ $contactInfos = [
         'icon'  => 'bi-envelope-fill',
         'color' => 'bg-primary-subtle text-primary',
         'title' => 'Email',
-        'lines' => ['contact@ecam-epmi.com'],
-        'link'  => 'mailto:contact@ecam-epmi.com',
+        'lines' => ['sandbox.epmi@gmail.com'],
+        'link'  => 'mailto:sandbox.epmi@gmail.com',
     ],
     [
         'icon'  => 'bi-telephone-fill',
@@ -46,7 +46,7 @@ $contactInfos = [
         'icon'  => 'bi-clock-fill',
         'color' => 'bg-warning-subtle text-warning',
         'title' => 'Horaires du laboratoire',
-        'lines' => ['Lundi - Vendredi : 9h00 - 18h00', 'Ferme le week-end et jours feries'],
+        'lines' => ['Lundi - Vendredi : 9h00 - 19h00', 'Ferme le week-end et jours feries'],
         'link'  => null,
     ],
 ];
@@ -82,7 +82,7 @@ require_once __DIR__ . '/includes/header.php';
                 <h1 class="display-5 fw-bold mb-3">Parlons de <span class="gradient-text">votre projet</span></h1>
                 <p class="lead text-muted m-0">
                     Une question sur le depot dun projet, un partenariat industriel ou un acces aux equipements du
-                    laboratoire ? Lequipe EcoSmart Lab vous repond sous 48 heures ouvrees.
+                    laboratoire ? Lequipe de The SandBox vous repond sous 48 heures ouvrees.
                 </p>
             </div>
         </div>
@@ -177,17 +177,6 @@ require_once __DIR__ . '/includes/header.php';
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rgpd" name="rgpd" value="1" required>
-                                    <label class="form-check-label small text-muted" for="rgpd">
-                                        Jaccepte que mes donnees soient utilisees pour traiter ma demande. Elles ne sont
-                                        ni revendues ni transmises a des tiers. *
-                                    </label>
-                                    <div class="invalid-feedback">Cette autorisation est necessaire pour envoyer le message.</div>
-                                </div>
-                            </div>
-
                             <div class="col-12 d-flex flex-wrap gap-3 mt-2">
                                 <button type="submit" class="btn btn-primary btn-lg">
                                     <i class="bi bi-send-fill"></i> Envoyer le message
@@ -206,7 +195,7 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="card-custom h-auto overflow-hidden mb-4">
                     <div class="ratio ratio-4x3">
                         <iframe
-                            src="https://www.openstreetmap.org/export/embed.html?bbox=2.0530%2C49.0330%2C2.0770%2C49.0450&amp;layer=mapnik&amp;marker=49.0390%2C2.0650"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=2.071166%2C49.028950%2C2.079166%2C49.033950&layer=mapnik&marker=49.031450%2C2.075166"
                             title="Localisation du campus ECAM-EPMI a Cergy-Pontoise"
                             style="border: 0;"
                             loading="lazy"
