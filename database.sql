@@ -87,3 +87,15 @@ CREATE TABLE `users` (
     `date_creation` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `date_modification` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Table des comptes utilisateurs pour inscription et connexion
+CREATE TABLE IF NOT EXISTS `utilisateurs` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `nom` VARCHAR(100) NOT NULL,
+    `email` VARCHAR(190) NOT NULL UNIQUE,
+    `mot_de_passe` VARCHAR(255) NOT NULL,
+    `date_creation` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+
