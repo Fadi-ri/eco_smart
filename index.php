@@ -68,8 +68,8 @@ require_once __DIR__ . '/includes/header.php';
                     <i class="bi bi-patch-check-fill"></i> ECAM-EPMI • Cycle Ingenieur
                 </span>
                 <h1 class="display-4 fw-bold lh-1 mb-3">
-                    LInnovation Technologique & <br>
-                    <span class="gradient-text">LIngenierie Durable Eco-Responsable</span>
+                    L'Innovation Technologique  <br>
+                    <span class="gradient-text">L'Ingenierie Durable Eco-Responsable</span>
                 </h1>
                 <p class="lead text-muted mb-4">
                     Plateforme collaborative centralisant les projets de recherche, prototypes industriels, maquettes IoT et innovations en energie des etudiants et chercheurs de lECAM-EPMI.

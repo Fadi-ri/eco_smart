@@ -120,16 +120,14 @@ $navLinks = [
                     </li>
                 </ul>
 
-                <!-- Actions de droite (Dark Mode) -->
                 <div class="d-none d-lg-flex align-items-center gap-3">
-                    <button type="button"
-                            class="theme-toggle-btn js-theme-toggle"
-                            title="Basculer theme sombre / clair"
-                            aria-label="Basculer theme">
+                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle p-2 js-theme-toggle"
+                            style="width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;"
+                            title="Basculer theme sombre / clair" aria-label="Basculer le theme">
                         <i class="bi bi-moon-stars-fill"></i>
                     </button>
                 </div>
-
+                
                 <!-- Connexion / Deconnexion -->
                 <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
                     <?php if (isset($_SESSION['utilisateur_id'])): ?>
