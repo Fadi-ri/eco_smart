@@ -60,7 +60,7 @@
                         <i class="bi bi-geo-alt-fill text-danger me-1"></i> 13 Boulevard de l'Hautil, 95092 Cergy-Pontoise Cedex
                     </p>
                     <p class="text-muted small mb-2">
-                        <i class="bi bi-envelope-fill text-primary me-1"></i> contact@ecam-epmi.com
+                        <i class="bi bi-envelope-fill text-primary me-1"></i> sandbox.epmi@gmail.com
                     </p>
                     <p class="text-muted small mb-3">
                         <i class="bi bi-telephone-fill text-success me-1"></i> +33 (0)1 30 75 60 40
