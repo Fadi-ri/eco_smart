@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -126,7 +127,7 @@ require_once __DIR__ . '/includes/header.php';
 
                 <p class="text-center mt-4 mb-0">
                     Pas encore de compte ?
-                    <a href="inscription.php">Créer un compte</a>
+                    <a href="creat_acount.php">Créer un compte</a>
                 </p>
             </div>
 
@@ -137,4 +138,3 @@ require_once __DIR__ . '/includes/header.php';
 <?php
 require_once __DIR__ . '/includes/footer.php';
 ?>
-git stach login.php

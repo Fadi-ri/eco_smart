@@ -1,3 +1,4 @@
+
 <?php
 /**
  * En-tete Commun & Navigation
@@ -65,6 +66,7 @@ $navLinks = [
     <!-- Barre de Navigation Superieure -->
     <nav class="navbar navbar-expand navbar-custom sticky-top">
         <div class="container">
+
             <!-- Logo & Nom -->
             <a class="navbar-brand" href="index.php">
                 <div class="brand-icon">
@@ -73,27 +75,78 @@ $navLinks = [
                 <span><?= APP_NAME ?></span>
             </a>
 
+            <!-- Bouton menu mobile -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarMain"
+                    aria-controls="navbarMain"
+                    aria-expanded="false"
+                    aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <!-- Liens de Navigation -->
             <div class="navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
-                    <?php foreach ($navLinks as $link): ?>
-                        <li class="nav-item">
-                            <a class="nav-link <?= ($currentPage === $link['file']) ? 'active fw-semibold' : '' ?>"
-                               href="<?= e($link['file']) ?>"
-                               <?= ($currentPage === $link['file']) ? 'aria-current="page"' : '' ?>>
-                                <i class="bi <?= e($link['icon']) ?> me-1"></i> <?= e($link['label']) ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'feed.php') ? 'active' : '' ?>" href="feed.php">
+                            <i class="bi bi-house-door me-1"></i> Feed
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'projets.php') ? 'active' : '' ?>" href="projets.php">
+                            <i class="bi bi-grid-fill me-1"></i> Projets & Innovations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'inscription.php') ? 'active' : '' ?>" href="inscription.php">
+                            <i class="bi bi-plus-circle-fill me-1"></i> Deposer un Projet
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'admin.php') ? 'active' : '' ?>" href="admin.php">
+                            <i class="bi bi-table me-1"></i> Tableau de Bord (CRUD)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'a_propos.php') ? 'active' : '' ?>" href="a_propos.php">
+                            <i class="bi bi-info-circle me-1"></i> A Propos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'contact.php') ? 'active' : '' ?>" href="contact.php">
+                            <i class="bi bi-envelope me-1"></i> Contact
+                        </a>
+                    </li>
                 </ul>
 
-                <!-- Actions de droite (Dark Mode ) -->
-                <div class="d-flex align-items-center gap-3">
-                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle p-2 js-theme-toggle"
-                            style="width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;"
-                            title="Basculer theme sombre / clair" aria-label="Basculer le theme">
+                <!-- Actions de droite (Dark Mode) -->
+                <div class="d-none d-lg-flex align-items-center gap-3">
+                    <button type="button"
+                            class="theme-toggle-btn js-theme-toggle"
+                            title="Basculer theme sombre / clair"
+                            aria-label="Basculer theme">
                         <i class="bi bi-moon-stars-fill"></i>
                     </button>
+                </div>
+
+                <!-- Connexion / Deconnexion -->
+                <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+                    <?php if (isset($_SESSION['utilisateur_id'])): ?>
+                        <a href="profil.php" class="text-primary text-decoration-none">
+                            <i class="bi bi-person-circle me-1"></i>
+                            <?= htmlspecialchars($_SESSION['utilisateur_nom'] ?? 'Utilisateur', ENT_QUOTES, 'UTF-8') ?>
+                        </a>
+
+                        <a href="logout.php" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-box-arrow-right me-1"></i>
+                            Se déconnecter
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php" class="btn btn-outline-primary btn-sm">
+                            Se connecter
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
